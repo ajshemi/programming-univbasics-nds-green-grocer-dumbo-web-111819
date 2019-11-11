@@ -75,7 +75,9 @@ def apply_coupons(cart,coupons)
     new_hash={}
     coupons.map do |item2|
       if item1[:item] == item2[:item]
-        item1[:count]=item1[:count]-item2[:num]
+        if item1[:count]>item2[:num]
+          item1[:count]=item1[:count]-item2[:num]
+        end
         new="#{item1[:item]} W/COUPON"
         new_hash[:item]=new
         new_hash[:price]=item2[:cost]/item2[:num]
